@@ -10,5 +10,9 @@ public class InputXpathDescendantTokenSwitchNoDefault {
                 break;
         }
     }
+<<<<<<< HEAD
 }
 
+=======
+ }
+>>>>>>> f281de22db2df74cb56950b6081a342823569898

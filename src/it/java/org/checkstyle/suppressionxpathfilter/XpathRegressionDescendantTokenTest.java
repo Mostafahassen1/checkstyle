@@ -55,10 +55,17 @@ public class XpathRegressionDescendantTokenTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = List.of(
+<<<<<<< HEAD
                 "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
                         + "[@text='InputXpathDescendantTokenSwitchNoDefault']]"
                         + "/OBJBLOCK/METHOD_DEF[./IDENT"
                         + "[@text='testMethod1']]/SLIST/LITERAL_SWITCH"
+=======
+            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
+                    + "[@text='InputXpathDescendantTokenSwitchNoDefault']]"
+                    + "/OBJBLOCK/METHOD_DEF[./IDENT"
+                    + "[@text='testMethod1']]/SLIST/LITERAL_SWITCH"
+>>>>>>> f281de22db2df74cb56950b6081a342823569898
         );
 
         runVerifications(moduleConfig, fileToProcess, expected, expectedXpathQueries);
@@ -77,7 +84,11 @@ public class XpathRegressionDescendantTokenTest extends AbstractXpathTestSupport
         moduleConfig.addProperty("maximumNumber", "1");
 
         final String[] expected = {
+<<<<<<< HEAD
             "7:9: " + getCheckMessage(DescendantTokenCheck.class,
+=======
+            "8:13: " + getCheckMessage(DescendantTokenCheck.class,
+>>>>>>> f281de22db2df74cb56950b6081a342823569898
                     DescendantTokenCheck.MSG_KEY_MAX,
                     2, 1, "LITERAL_SWITCH", "LITERAL_CASE"),
         };
@@ -86,7 +97,12 @@ public class XpathRegressionDescendantTokenTest extends AbstractXpathTestSupport
                 "/COMPILATION_UNIT/CLASS_DEF"
                         + "[./IDENT[@text='InputXpathDescendantTokenSwitchTooManyCases']]"
                         + "/OBJBLOCK/METHOD_DEF[./IDENT"
+<<<<<<< HEAD
                         + "[@text='testMethod1']]/SLIST/LITERAL_SWITCH"
+=======
+                        + "[@text='testMethod1']]/SLIST/VARIABLE_DEF[./IDENT[@text='switchLogic']]"
+                        + "/ASSIGN/LAMBDA/SLIST/LITERAL_SWITCH"
+>>>>>>> f281de22db2df74cb56950b6081a342823569898
         );
 
         runVerifications(moduleConfig, fileToProcess, expected, expectedXpathQueries);
@@ -99,6 +115,7 @@ public class XpathRegressionDescendantTokenTest extends AbstractXpathTestSupport
 
         final DefaultConfiguration moduleConfig =
                 createModuleConfig(DescendantTokenCheck.class);
+<<<<<<< HEAD
         moduleConfig.addProperty("tokens", "LITERAL_SWITCH");
         moduleConfig.addProperty("limitedTokens", "LITERAL_SWITCH");
         moduleConfig.addProperty("maximumNumber", "0");
@@ -115,8 +132,34 @@ public class XpathRegressionDescendantTokenTest extends AbstractXpathTestSupport
                         + "[./IDENT[@text='InputXpathDescendantTokenNestedSwitch']]"
                         + "/OBJBLOCK/METHOD_DEF"
                         + "[./IDENT[@text='testMethod1']]/SLIST/LITERAL_SWITCH"
+=======
+
+        moduleConfig.addProperty("tokens", "CASE_GROUP");
+        moduleConfig.addProperty("limitedTokens", "LITERAL_SWITCH");
+        moduleConfig.addProperty("maximumNumber", "0");
+
+        final String[] expected = {
+            "12:13: " + getCheckMessage(DescendantTokenCheck.class,
+                    DescendantTokenCheck.MSG_KEY_MAX,
+                    1, 0, "CASE_GROUP", "LITERAL_SWITCH"),
+        };
+
+        final List<String> expectedXpathQueries = List.of(
+            "/COMPILATION_UNIT/CLASS_DEF["
+                + "./IDENT[@text='InputXpathDescendantTokenNestedSwitch']]/OBJBLOCK/"
+                + "METHOD_DEF[./IDENT[@text='testMethod1']]/SLIST/LITERAL_SWITCH/"
+                + "CASE_GROUP[./LITERAL_CASE/EXPR/NUM_INT[@text='2']]",
+            "/COMPILATION_UNIT/CLASS_DEF["
+                + "./IDENT[@text='InputXpathDescendantTokenNestedSwitch']]/OBJBLOCK/"
+                + "METHOD_DEF[./IDENT[@text='testMethod1']]/SLIST/LITERAL_SWITCH/"
+                + "CASE_GROUP/LITERAL_CASE"
+>>>>>>> f281de22db2df74cb56950b6081a342823569898
         );
 
         runVerifications(moduleConfig, fileToProcess, expected, expectedXpathQueries);
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f281de22db2df74cb56950b6081a342823569898
